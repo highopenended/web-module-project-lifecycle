@@ -7,9 +7,12 @@ export class Todo extends React.Component {
   }
   render() {
     return(
-      <>
-        <p>{this.props.value}{this.props.isChecked && `✔️`}</p>
-      </>
+        <div>
+          <p
+            onClick={(e)=>this.props.checkToggler(e,this.props.id)}
+            name={this.props.name}
+          >{this.props.name}{this.props.completed && `✔️`}</p>
+        </div>
     )
   }
 }
