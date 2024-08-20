@@ -1,7 +1,14 @@
 import React from 'react'
 
-export default class Todo extends React.Component {
+export class Todo extends React.Component {
+  constructor(){
+    super()
+  }
   render() {
-    return null
+    return(
+    <p>{this.props.val}</p>
+    )
   }
 }
+
+export default Todo

@@ -1,7 +1,17 @@
 import React from 'react'
 
-export default class Form extends React.Component {
+export class Form extends React.Component {
+  constructor(){
+    super()
+  }
   render() {
-    return null
+    return(
+      <>
+        <input placeholder="Enter Task"></input>
+        <button>Submit</button>
+      </>
+    )
   }
 }
+
+export default Form
