@@ -1,12 +1,15 @@
 import React from 'react'
 
+
 export class Todo extends React.Component {
   constructor(){
     super()
   }
   render() {
     return(
-    <p>{this.props.val}</p>
+      <>
+        <p>{this.props.value}{this.props.isChecked && `✔️`}</p>
+      </>
     )
   }
 }

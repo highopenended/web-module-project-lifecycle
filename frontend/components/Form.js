@@ -7,8 +7,8 @@ export class Form extends React.Component {
   render() {
     return(
       <>
-        <input placeholder="Enter Task"></input>
-        <button>Submit</button>
+        <input placeholder="Enter Task" onChange={this.props.updateInput} value={this.props.inputValue}></input>
+        <button onClick={this.props.submitInput}>Submit</button>
       </>
     )
   }
