@@ -9,7 +9,7 @@ export class Todo extends React.Component {
     return(
         <div>
           <p
-            onClick={(e)=>this.props.checkToggler(e,this.props.id)}
+            onClick={(e)=>this.props.checkToggler(e, this.props.key)}
             name={this.props.name}
           >{this.props.name}{this.props.completed && `✔️`}</p>
         </div>

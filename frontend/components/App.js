@@ -1,5 +1,4 @@
 import React from 'react'
-import {Todo} from './Todo.js'
 import {TodoList} from './TodoList.js'
 import {Form} from './Form.js'
 import axios from 'axios'
@@ -8,14 +7,7 @@ import axios from 'axios'
 // const URL = 'http://localhost:9000/api/todos'
 
 
-const fetchTodos=()=>{
-  return axios
-    .get(`http://localhost:9000/api/todos`)
-    .then((resp)=>{
-        return resp.data
-    })
-    .catch((err)=>console.log("nooooo"))
-}
+
 
 
 let idCounter=0
@@ -33,25 +25,68 @@ export class App extends React.Component {
       todos:[]
     }
   }
+
+  fetchTodos=()=>{
+    return axios.get(`http://localhost:9000/api/todos`)
+      .then((resp)=>{
+        return resp.data
+      })
+      .catch((err)=>console.log(err.message))
+  }
+
+  updateAllTodos(){
+    this.fetchTodos()
+    .then((resp)=>{
+      // console.log(resp.data)
+      this.setState({...this.state,inputValue:'', todos:resp.data})
+      return resp.data
+    })
+    .catch((err)=>{
+      console.log(err.message)
+    })
+  }
+
+  
+
+
   componentDidMount(){
     console.log('Component Did Mount')
-
-
-    fetchTodos
-  
+    this.updateAllTodos()
   }
-  // componentDidUpdate(prevProps,prevState){console.log("Component Did Update")}
+
+  componentDidUpdate(prevProps,prevState){
+    console.log("Component Did Update")
+  }
 
   changeHandler = e => {
     this.setState({...this.state, inputValue:e.target.value})
   }
 
   submitHandler=()=>{
-    let newTodo ={id:this.generateId(), name: this.state.inputValue, completed: false}
-    let newArr = [...this.state.todos, newTodo]
-    this.setState({...this.state, inputValue:'', todos:newArr})
+
+    // let newTodo ={id:this.generateId(), name: this.state.inputValue, completed: false}
+    let newTodo ={name: this.state.inputValue, completed: false}
+
+    axios.post(`http://localhost:9000/api/todos`,newTodo)
+    .then((resp)=>{
+      this.updateAllTodos
+      // console.log(resp.data.data)
+      
+
+    })
+    .catch((err)=>console.log(err.message))
+
+
+    
   }
   
+
+
+
+
+
+
+
   generateId=()=>{
     idCounter++
     return idCounter

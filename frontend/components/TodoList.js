@@ -11,7 +11,7 @@ export class TodoList extends React.Component {
 
   render() {
     return(
-      <>
+      <div>
         {
           this.props.todos.map(todo=>{
             let showToDo = !this.props.hideCompleted ? true : (todo.completed?false:true)
@@ -24,7 +24,7 @@ export class TodoList extends React.Component {
               ></Todo>
           })
         }
-      </>
+      </div>
     )
   }
 }
