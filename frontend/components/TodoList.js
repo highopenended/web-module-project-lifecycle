@@ -1,9 +1,6 @@
 import React from 'react'
 import {Todo} from './Todo.js'
 
-
-
-
 export class TodoList extends React.Component {
   constructor(){
     super()
@@ -20,7 +17,7 @@ export class TodoList extends React.Component {
                 id={todo.id}
                 name={todo.name}
                 completed={todo.completed}
-                checkToggler={this.props.checkToggler}
+                todoClickHandler={this.props.todoClickHandler}
               ></Todo>
           })
         }

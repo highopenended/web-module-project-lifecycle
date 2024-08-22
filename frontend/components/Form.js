@@ -10,10 +10,12 @@ export class Form extends React.Component {
       <>
         <input 
           placeholder="Enter Task"
-          onChange={this.props.changeHandler}
+          onChange={this.props.inputChangeHandler}
           value={this.props.inputValue}
         ></input>
         <button onClick={this.props.submitHandler}>Submit</button>
+        <br></br>
+        <button onClick={this.props.toggleHideCompleted}>{this.props.hideCompleted ?  "Show Completed" : "Hide Completed"}</button>
       </>
     )
   }
